@@ -35,7 +35,7 @@ plt.scatter(transformed_enc_lda[:,0], transformed_enc_lda[:,1], c=y)
 plt.show()
 
 # show the test images on the corresponding 2D encoding locations 
-def create_2D_encoding_plot(enc, ax_lim, fname, n_samples=300):
+def create_2D_embedding_plot(enc, ax_lim, fname, n_samples=300):
     fig, ax = plt.subplots()
     ax.set_xlim(-ax_lim, ax_lim)
     ax.set_ylim(-ax_lim, ax_lim)
@@ -50,5 +50,5 @@ def create_2D_encoding_plot(enc, ax_lim, fname, n_samples=300):
     plt.show()
     
 odir = '../output/'
-create_2D_encoding_plot(transformed_enc_pca, ax_lim=2, fname=odir+'pca_encoding.png')
-create_2D_encoding_plot(transformed_enc_lda, ax_lim=8, fname=odir+'lda_encoding.png')
+create_2D_embedding_plot(transformed_enc_pca, ax_lim=2, fname=odir+'pca_encoding.png')
+create_2D_embedding_plot(transformed_enc_lda, ax_lim=8, fname=odir+'lda_encoding.png')
