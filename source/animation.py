@@ -15,7 +15,7 @@ enc_arr = []
 for i in range(len(img_arr)):
     enc_arr.append(encoder.predict(img_arr[i].reshape(1, 784)))
     
-# create animation by linearly interpolating between latent codes of the numbers.
+# create animation by linearly interpolating between latent codes of the images.
 def create_interpolation_animation(enc1, enc2, fname):
     fig = plt.figure()
     ims = []
