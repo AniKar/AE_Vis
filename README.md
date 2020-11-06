@@ -14,14 +14,14 @@ Some of the outstanding examples are:
   <img src="https://github.com/AniKar/Autoencoder_mnist/blob/master/output/animation_0_6.gif" width="300" />
 </p>
 
-Also, Principal component analysis (PCA) and Linear Discriminant Analysis (LDA) dimensionaluty reduction techniques are used to transform the latent representation (32D) of images to 2D embedding.
+Also, several dimensionaluty reduction techniques are used to transform the latent representation (32D) of images into 2D embedding, namaely PCA, LDA, Isomap and tSNE methods.
 
-PCA results:
+![alt text](https://github.com/AniKar/Autoencoder_mnist/blob/master/output/pca_embedding.png)
 
-![alt text](https://github.com/AniKar/Autoencoder_mnist/blob/master/output/pca_encoding.png)
+![alt text](https://github.com/AniKar/Autoencoder_mnist/blob/master/output/lda_embedding.png)
 
-LDA results:
+![alt text](https://github.com/AniKar/Autoencoder_mnist/blob/master/output/isomap_embedding.png)
 
-![alt text](https://github.com/AniKar/Autoencoder_mnist/blob/master/output/lda_encoding.png)
+![alt text](https://github.com/AniKar/Autoencoder_mnist/blob/master/output/tsne_embedding.png)
 
-It's clear that *none* of the used methods achieves impressive separation between classes (for 2D).
+It can be observed that out of the above methods tSNE achieves relatively better results in finding 2D embedding that exhibits quite good separation property between the 10 classes.
