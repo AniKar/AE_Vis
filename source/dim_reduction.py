@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 from tensorflow import keras
 from keras.datasets import mnist
 from sklearn.decomposition import PCA
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+from sklearn.manifold import TSNE, Isomap
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import random
 
@@ -22,21 +23,22 @@ enc = encoder.predict(x)
 pca = PCA(n_components=2)
 transformed_enc_pca = pca.fit_transform(enc)
 
-fig = plt.figure(figsize=(8,8))
-plt.scatter(transformed_enc_pca[:,0], transformed_enc_pca[:,1], c=y)
-plt.show()
-
 # LDA
-lda = LinearDiscriminantAnalysis(n_components=2)
+lda = LDA(n_components=2)
 transformed_enc_lda = lda.fit_transform(enc, y)
 
-fig = plt.figure(figsize=(8,8))
-plt.scatter(transformed_enc_lda[:,0], transformed_enc_lda[:,1], c=y)
-plt.show()
+# ISOMAP
+isomap = Isomap(n_components=2, n_neighbors=10)
+transformed_enc_isomap = isomap.fit_transform(enc, y)
+
+# tSNE
+tsne = TSNE(n_components=2, perplexity=10)
+transformed_enc_tsne = tsne.fit_transform(enc, y)
 
 # show the test images on the corresponding 2D encoding locations 
-def create_2D_embedding_plot(enc, ax_lim, fname, n_samples=300):
-    fig, ax = plt.subplots()
+def create_2D_embedding_plot(enc, ax_lim, file_name, plot_name, n_samples=100):
+    _, ax = plt.subplots()
+    plt.scatter(enc[:,0], enc[:,1], c=y)
     ax.set_xlim(-ax_lim, ax_lim)
     ax.set_ylim(-ax_lim, ax_lim)
     
@@ -46,9 +48,12 @@ def create_2D_embedding_plot(enc, ax_lim, fname, n_samples=300):
         imagebox = OffsetImage(img, zoom=0.4)
         ab = AnnotationBbox(imagebox, (enc[i,0], enc[i,1]), pad=0.3)
         ax.add_artist(ab)
-    plt.savefig(fname)
+    plt.title(plot_name)
+    plt.savefig(file_name)
     plt.show()
     
 odir = '../output/'
-create_2D_embedding_plot(transformed_enc_pca, ax_lim=2, fname=odir+'pca_encoding.png')
-create_2D_embedding_plot(transformed_enc_lda, ax_lim=8, fname=odir+'lda_encoding.png')
+create_2D_embedding_plot(transformed_enc_pca, ax_lim=2, file_name=odir+'pca_encoding.png', plot_name='PCA')
+create_2D_embedding_plot(transformed_enc_lda, ax_lim=8, file_name=odir+'lda_encoding.png', plot_name='LDA')
+create_2D_embedding_plot(transformed_enc_isomap, ax_lim=3, file_name=odir+'isomap_encoding.png', plot_name='ISOMAP')
+create_2D_embedding_plot(transformed_enc_tsne, ax_lim=100, file_name=odir+'tnse_encoding.png', plot_name='tSNE')
