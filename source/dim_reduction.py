@@ -53,7 +53,7 @@ def create_2D_embedding_plot(enc, ax_lim, file_name, plot_name, n_samples=100):
     plt.show()
     
 odir = '../output/'
-create_2D_embedding_plot(transformed_enc_pca, ax_lim=2, file_name=odir+'pca_encoding.png', plot_name='PCA')
-create_2D_embedding_plot(transformed_enc_lda, ax_lim=8, file_name=odir+'lda_encoding.png', plot_name='LDA')
-create_2D_embedding_plot(transformed_enc_isomap, ax_lim=3, file_name=odir+'isomap_encoding.png', plot_name='ISOMAP')
-create_2D_embedding_plot(transformed_enc_tsne, ax_lim=100, file_name=odir+'tnse_encoding.png', plot_name='tSNE')
+create_2D_embedding_plot(transformed_enc_pca, ax_lim=2, file_name=odir+'pca_embedding.png', plot_name='PCA')
+create_2D_embedding_plot(transformed_enc_lda, ax_lim=8, file_name=odir+'lda_embedding.png', plot_name='LDA')
+create_2D_embedding_plot(transformed_enc_isomap, ax_lim=3, file_name=odir+'isomap_embedding.png', plot_name='ISOMAP')
+create_2D_embedding_plot(transformed_enc_tsne, ax_lim=100, file_name=odir+'tsne_embedding.png', plot_name='tSNE')
