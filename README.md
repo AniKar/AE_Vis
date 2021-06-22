@@ -1,4 +1,4 @@
-# Autoencoder_mnist
+# AE_Vis
 
 The repository contains an autoencoder model implementation in *Keras*, which is trained on *MNIST* dataset of handwritten digits.
 
